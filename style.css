@@ -1,18 +1,24 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial;
+  background: #0d1117;
+  color: white;
   text-align: center;
-  padding: 50px;
-  background: #f0f0f0;
+  padding: 20px;
+}
+
+.box {
+  background: #161b22;
+  padding: 15px;
+  margin: 15px auto;
+  width: 80%;
+  border-radius: 10px;
 }
 
 button {
-  padding: 15px 30px;
-  font-size: 20px;
+  padding: 15px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #00ff99;
   cursor: pointer;
-}
-
-#message {
-  margin-top: 20px;
-  font-size: 18px;
-  color: green;
 }
