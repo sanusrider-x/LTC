@@ -1,24 +1,15 @@
 let score = 0;
-let time = 10;
+const scoreEl = document.getElementById('score');
+const messageEl = document.getElementById('message');
+const button = document.getElementById('clickBtn');
 
-const scoreEl = document.getElementById("score");
-const timeEl = document.getElementById("time");
-const btn = document.getElementById("btn");
+button.addEventListener('click', () => {
+  score++;
+  scoreEl.textContent = score;
 
-btn.onclick = () => {
-  if (time > 0) {
-    score++;
-    scoreEl.innerText = score;
+  if(score % 5 === 0) {
+    messageEl.textContent = `🔥 Great! You reached ${score} points!`;
+  } else {
+    messageEl.textContent = '';
   }
-};
-
-let timer = setInterval(() => {
-  time--;
-  timeEl.innerText = time;
-
-  if (time === 0) {
-    clearInterval(timer);
-    btn.disabled = true;
-    alert("Game Over! Your Score: " + score);
-  }
-}, 1000);
+});
