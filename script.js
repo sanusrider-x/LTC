@@ -5,7 +5,6 @@ const userEl = document.getElementById("user");
 const ltcEl = document.getElementById("ltc");
 const hashrateEl = document.getElementById("hashrate");
 
-
 // Telegram user
 let userId = "guest";
 if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
