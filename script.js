@@ -4,6 +4,9 @@ tg.ready();
 const userEl = document.getElementById("user");
 const ltcEl = document.getElementById("ltc");
 const hashrateEl = document.getElementById("hashrate");
+document.getElementById("textview1").innerText = username;
+document.getElementById("textview2").innerText = balance;
+document.getElementById("textview3").innerText = hashrate + " H/s";
 
 // Telegram user
 let userId = "guest";
