@@ -6,26 +6,7 @@ body {
   text-align: center;
 }
 //
-.balance-box {
-  text-align: right;
-}
 
-.wallet-btn {
-  margin-top: 6px;
-  background: transparent;
-  border: none;
-  padding: 2px;
-  cursor: pointer;
-}
-
-.wallet-btn img {
-  width: 12px;
-  height: 12px;
-}
-
-.wallet-btn:active {
-  transform: scale(0.9);
-}
 //
 
 /* TOP BAR */
