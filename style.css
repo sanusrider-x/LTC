@@ -5,6 +5,28 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
 }
+//
+.balance-box {
+  text-align: right;
+}
+
+.wallet-btn {
+  margin-top: 6px;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.wallet-btn img {
+  width: 22px;
+  height: 22px;
+}
+
+.wallet-btn:active {
+  transform: scale(0.9);
+}
+//
 
 /* TOP BAR */
 .top {
