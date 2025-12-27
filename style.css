@@ -30,8 +30,8 @@ body {
 }
 
 .center img {
-  width: 320px;
-  height: 320px;
+  width: 290px;
+  height: 290px;
 }
 
 /* ROTATION */
@@ -51,7 +51,7 @@ body {
 
 .card {
   background: #1b1f45;
-  padding: 15px;
+  padding: 10px;
   border-radius: 12px;
   margin-bottom: 15px;
 }
