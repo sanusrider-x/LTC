@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TRX Mining Game</title>
+  <title>LTC Ultra Mining</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h2>⚡ TRX Mining Game</h2>
 
-  <p>User: <span id="user">Loading...</span></p>
-
-  <div class="box">
-    <p>Hashrate</p>
-    <h1><span id="hashrate">10</span> H/s</h1>
+  <!-- TOP BAR -->
+  <div class="top">
+    <div>
+      <span class="label">User</span>
+      <div id="user" class="value">Loading...</div>
+    </div>
+    <div>
+      <span class="label">Balance (LTC)</span>
+      <div id="ltc" class="value">0.000000</div>
+    </div>
   </div>
 
-  <div class="box">
-    <p>TRX Mined</p>
-    <h1><span id="trx">0.0000</span></h1>
+  <!-- CENTER MINING IMAGE -->
+  <div class="center">
+    <img src="miner.png" class="rotate" alt="Mining">
   </div>
 
-  <button onclick="boost()">🚀 Boost Hashrate</button>
+  <!-- BOTTOM STATS -->
+  <div class="bottom">
+    <div class="card">
+      <p>Hashrate</p>
+      <h2><span id="hashrate">10</span> H/s</h2>
+    </div>
+
+    <button onclick="boost()">🚀 Boost Hashrate</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
