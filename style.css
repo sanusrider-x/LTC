@@ -6,3 +6,13 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
 }
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e293b;
+  padding: 12px;
+  border-radius: 12px;
+  margin: 15px;  
+}
