@@ -8,8 +8,9 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-  
+/*this is main page*/ 
 <body>
+  /*this is top liner layout*/
   <div class="top-bar">
   <img src="img.png" class="coin-img">
 
@@ -22,6 +23,27 @@
 
   <button class="wallet-btn">Wallet</button>
   </div>
+  /*this is down top linear layout*/
+
+  <div class="mining-section">
+
+  <img src="img.png" class="mining-img">
+
+  <div class="mining-amount">
+    <span id="mineBal">0.000</span> LTC
+  </div>
+
+  <div class="hashrate">
+    Hashrate: <span id="hash">10</span>
+  </div>
+
+  <div class="action-bar">
+    <button class="collect-btn">Collect</button>
+    <button class="boost-btn">Boost</button>
+  </div>
+
+  </div>
+  
   
   <script src="script.js"></script>  
 </body>
