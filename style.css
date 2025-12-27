@@ -38,9 +38,9 @@ body {
 }
 
 .balance-amount {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  color: #22c55e;
+  color: #ffffff;
 }
 
 /* Right button */
@@ -48,7 +48,7 @@ body {
   padding: 8px 14px;
   border: none;
   border-radius: 8px;
-  background: #22c55e;
+  background: #ffffff;
   color: black;
   font-size: 14px;
   cursor: pointer;
