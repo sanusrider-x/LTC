@@ -11,7 +11,7 @@ body {
 }
 
 .wallet-btn {
-  margin-top: 4px;
+  margin-top: 6px;
   background: transparent;
   border: none;
   padding: 2px;
@@ -19,8 +19,8 @@ body {
 }
 
 .wallet-btn img {
-  width: 5px;
-  height: 5px;
+  width: 12px;
+  height: 12px;
 }
 
 .wallet-btn:active {
