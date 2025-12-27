@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>LTC Ultra Mining</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -10,39 +9,33 @@
 
 <body>
 
-  <!-- linear1 -->
-  <div id="linear1" class="linear vertical">
+  <!-- TOP BAR -->
+  <div class="top">
+    <div>
+      <span class="label">User</span>
+      <div id="user" class="value">Loading...</div>
+    </div>
+    <div>
+      <span class="label">Balance (LTC)</span>
+      <div id="ltc" class="value">0.000000</div>
+    </div>
+  </div>
 
-    <!-- linear2 (top bar) -->
-    <div id="linear2" class="linear horizontal padding">
-      <div id="textview1" class="text user">user</div>
+  <!-- CENTER MINING IMAGE -->
+  <div class="center">
+    <img src="miner.png" class="rotate" alt="Mining">
+  </div>
 
-      <!-- spacer (linear3) -->
-      <div id="linear3" class="spacer"></div>
-
-      <div id="textview2" class="text balance">balance</div>
+  <!-- BOTTOM STATS -->
+  <div class="bottom">
+    <div class="card">
+      <p>Hashrate</p>
+      <h2><span id="hashrate">10</span> H/s</h2>
     </div>
 
-    <!-- linear4 (empty spacer) -->
-    <div id="linear4" class="spacer"></div>
-
-    <!-- linear5 -->
-    <div id="linear5" class="linear vertical mining-box">
-
-      <!-- linear6 (image container) -->
-      <div id="linear6" class="image-box">
-        <img id="imageview1" src="default_image.png" alt="Mining">
-      </div>
-
-      <div id="textview3" class="text hash">hash rate</div>
-    </div>
-
-    <!-- button -->
-    <button id="button1">boost</button>
-
+    <button onclick="boost()">🚀 Boost Hashrate</button>
   </div>
 
   <script src="script.js"></script>
 </body>
-    </html>
-    
+</html>
