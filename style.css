@@ -11,10 +11,10 @@ body {
 }
 
 .wallet-btn {
-  margin-top: 6px;
+  margin-top: 4px;
   background: transparent;
   border: none;
-  padding: 4px;
+  padding: 2px;
   cursor: pointer;
 }
 
