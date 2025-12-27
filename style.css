@@ -1,68 +1,71 @@
 body {
   margin: 0;
-  background: #ffffff;
+  background: #0d1025;
+  color: #fff;
   font-family: Arial, sans-serif;
+  text-align: center;
 }
 
-/* Base LinearLayout styles */
-.linear {
+/* TOP BAR */
+.top {
   display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #15193c;
 }
 
-.vertical {
-  flex-direction: column;
+.label {
+  font-size: 12px;
+  color: #aaa;
 }
 
-.horizontal {
-  flex-direction: row;
-  align-items: center;
-}
-
-.padding {
-  padding: 8px;
-}
-
-/* TextView styles */
-.text {
-  padding: 8px;
+.value {
   font-size: 16px;
-  color: #000000;
+  font-weight: bold;
 }
 
-.hash {
-  font-size: 12px;
+/* CENTER IMAGE */
+.center {
+  margin: 40px 0;
 }
 
-/* Spacer (linear3 & linear4) */
-.spacer {
-  flex: 1;
+.center img {
+  width: 180px;
+  height: 180px;
 }
 
-/* Mining box */
-.mining-box {
-  height: 300px;
-  padding: 8px;
+/* ROTATION */
+.rotate {
+  animation: spin 6s linear infinite;
 }
 
-/* Image container */
-.image-box {
-  height: 200px;
-  padding: 8px;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+/* BOTTOM */
+.bottom {
+  padding: 20px;
 }
 
-/* Button */
+.card {
+  background: #1b1f45;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
 button {
-  width: fit-content;
-  padding: 8px;
-  font-size: 12px;
-  background: transparent;
-  border: 1px solid #000;
-  color: #000;
-  margin-left: 8px;
+  background: #4caf50;
+  border: none;
+  border-radius: 12px;
+  padding: 15px 25px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.96);
 }
