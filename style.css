@@ -60,13 +60,20 @@ body {
 }
 
 /* Rotating center image */
+
 .mining-img {
-  width: 180px;
-  height: 180px;
+  width: 200px !important;
+  height: 200px !important;
+  max-width: none !important;
+  max-height: none !important;
   border-radius: 50%;
+  object-fit: cover;
+  display: block;
   margin: 20px auto;
   animation: spin 4s linear infinite;
-}
+  }
+
+
 
 @keyframes spin {
   from { transform: rotate(0deg); }
