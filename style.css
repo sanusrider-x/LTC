@@ -177,7 +177,7 @@ body {
   }
 
 /* Simple linear layout */
-.info-bar {
+.level-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -185,15 +185,14 @@ body {
   padding: 10px 14px;
   background: #0b1220;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 14px;
   color: #ffffff;
 }
 
-.info-left {
-  opacity: 0.9;
+.level-text {
+  font-weight: 500;
 }
 
-.info-right {
+.speed-text {
   color: #22c55e;
-    }
-    
+}
