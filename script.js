@@ -22,8 +22,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   } else {
     avatar.src = "user.png";
+    window.location.href = "https://t.me/LtcUltraMiningBot";
+
     window.location.replace("https://t.me/LtcUltraMiningBot");
-    return;
+    
     // fallback
   }
 
