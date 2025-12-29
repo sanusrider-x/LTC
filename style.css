@@ -116,12 +116,14 @@ body {
 .collect-btn {
   background: #22c55e;
   color: black;
+  font-weight: bold;
 }
 
 /* Right button */
 .boost-btn {
   background: #3b82f6;
-  color: white;
+  color: black;
+  font-weight: bold;
 }
 
 
