@@ -62,8 +62,8 @@ body {
 /* Rotating center image */
 
 .mining-img {
-  width: 260px !important;
-  height: 260px !important;
+  width: 400px !important;
+  height: 400px !important;
   max-width: none !important;
   max-height: none !important;
   border-radius: 50%;
