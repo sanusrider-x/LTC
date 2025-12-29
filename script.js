@@ -30,3 +30,42 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+const userId = tg.initDataUnsafe.user.id;
+
+// Bot.Business webhook
+const API_URL = "https://bot.business/api/webhook/YOUR_WEBHOOK_ID";
+
+// Elements
+const mineBalEl = document.getElementById("mineBal");
+const hashEl = document.getElementById("hash");
+
+// Fetch mining data
+function loadMining() {
+  fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      user_id: userId,
+      action: "mine"
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    // Expected response:
+    // { mine_balance, hash_rate }
+
+    mineBalEl.innerText = Number(data.mine_balance).toFixed(7);
+
+    // Display hashrate as simple number
+    hashEl.innerText = Math.round(data.hash_rate * 10000000);
+  });
+}
+
+// Initial load
+loadMining();
+
+// UI refresh (visual only)
+setInterval(loadMining, 6000); // slow refresh
+    
