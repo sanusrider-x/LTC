@@ -47,6 +47,11 @@ body {
 
 /* Right button */
 .wallet-btn {
+  background: linear-gradient(135deg,
+    #22c55e,
+    #3b82f6,
+    #a855f7 );
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
   padding: 8px 14px;
   border: none;
   border-radius: 8px;
