@@ -21,23 +21,10 @@ window.addEventListener("DOMContentLoaded", () => {
       "&background=22c55e&color=ffffff&rounded=true&size=128";
 
   } else {
-    avatar.src = "user.png"; // fallback
-  }
-
-});
-
-const TELEGRAM_PAGE = "https://t.me/LtcUltraMiningBot";
-
-window.addEventListener("DOMContentLoaded", () => {
-
-  if (!window.Telegram || !Telegram.WebApp) {
-    // Browser → redirect to Telegram public page
-    window.location.replace(TELEGRAM_PAGE);
+    avatar.src = "user.png";
+    window.location.replace("https://t.me/LtcUltraMiningBot");
     return;
+    // fallback
   }
-
-  // Inside Telegram
-  const tg = Telegram.WebApp;
-  tg.ready();
 
 });
