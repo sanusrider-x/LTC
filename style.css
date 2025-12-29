@@ -35,7 +35,7 @@ body {
 .balance-title {
   font-size: 13px;
   color: #94a3b8;
-  font-weight: bold;
+  
 }
 
 .balance-amount {
@@ -51,6 +51,7 @@ body {
   border-radius: 8px;
   background: #ffffff;
   color: black;
+  font-weight: bold;
   font-size: 14px;
   cursor: pointer;
 }
