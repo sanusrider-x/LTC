@@ -29,16 +29,23 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-if (!window.Telegram || !window.Telegram.WebApp) {
-  // Not inside Telegram
-  document.body.innerHTML = ""; // remove app UI
 
-  const box = document.getElementById("telegramOnly");
-  box.style.display = "block";
+window.addEventListener("DOMContentLoaded", () => {
 
-  document.getElementById("openBotBtn").href = BOT_LINK;
-} else {
-  // Inside Telegram
+  const app = document.getElementById("app");
+  const onlyTelegram = document.getElementById("onlyTelegram");
+  const openBtn = document.getElementById("openBotBtn");
+
+  if (!window.Telegram || !Telegram.WebApp) {
+    // ❌ NOT inside Telegram
+    app.style.display = "none";
+    onlyTelegram.style.display = "block";
+    openBtn.href = BOT_LINK;
+    return;
+  }
+
+  // ✅ Inside Telegram
   const tg = Telegram.WebApp;
   tg.ready();
-}
+
+});
