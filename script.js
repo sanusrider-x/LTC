@@ -1,5 +1,3 @@
-const BOT_LINK = "https://t.me/LtcUltraMiningBot";
-
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -28,23 +26,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
+const TELEGRAM_PAGE = "https://t.me/LtcUltraMiningBot";
 
 window.addEventListener("DOMContentLoaded", () => {
 
-  const app = document.getElementById("app");
-  const onlyTelegram = document.getElementById("onlyTelegram");
-  const openBtn = document.getElementById("openBotBtn");
-
   if (!window.Telegram || !Telegram.WebApp) {
-    // ❌ NOT inside Telegram
-    app.style.display = "none";
-    onlyTelegram.style.display = "block";
-    openBtn.href = BOT_LINK;
+    // Browser → redirect to Telegram public page
+    window.location.replace(TELEGRAM_PAGE);
     return;
   }
 
-  // ✅ Inside Telegram
+  // Inside Telegram
   const tg = Telegram.WebApp;
   tg.ready();
 
