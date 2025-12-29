@@ -1,3 +1,5 @@
+const BOT_LINK = "https://t.me/LtcUltraMiningBot";
+
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -25,3 +27,18 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+if (!window.Telegram || !window.Telegram.WebApp) {
+  // Not inside Telegram
+  document.body.innerHTML = ""; // remove app UI
+
+  const box = document.getElementById("telegramOnly");
+  box.style.display = "block";
+
+  document.getElementById("openBotBtn").href = BOT_LINK;
+} else {
+  // Inside Telegram
+  const tg = Telegram.WebApp;
+  tg.ready();
+}
