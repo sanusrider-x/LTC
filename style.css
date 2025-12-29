@@ -110,6 +110,10 @@ body {
   border-radius: 10px;
   font-size: 15px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 /* Left button */
@@ -126,6 +130,12 @@ body {
   font-weight: bold;
 }
 
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
 
 /* Bottom navigation bar */
 .bottom-nav {
