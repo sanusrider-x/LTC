@@ -175,3 +175,25 @@ body {
 body {
   padding-bottom: 80px;
   }
+
+/* Simple linear layout */
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 16px;
+  padding: 10px 14px;
+  background: #0b1220;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.info-left {
+  opacity: 0.9;
+}
+
+.info-right {
+  color: #22c55e;
+    }
+    
