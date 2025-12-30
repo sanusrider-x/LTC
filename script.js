@@ -32,40 +32,46 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const userId = tg.initDataUnsafe.user.id;
-
-// Bot.Business webhook
-const API_URL = "https://bot.business/api/webhook/YOUR_WEBHOOK_ID";
-
-// Elements
 const mineBalEl = document.getElementById("mineBal");
 const hashEl = document.getElementById("hash");
 
-// Fetch mining data
-function loadMining() {
-  fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      user_id: userId,
-      action: "mine"
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    // Expected response:
-    // { mine_balance, hash_rate }
+// Settings
+const HASH_RATE = 0.0000001; // slow mining per second
 
-    mineBalEl.innerText = Number(data.mine_balance).toFixed(7);
+// Load saved data
+let mined = parseFloat(localStorage.getItem("mined")) || 0;
+let lastTime = parseInt(localStorage.getItem("lastTime")) || Date.now();
 
-    // Display hashrate as simple number
-    hashEl.innerText = Math.round(data.hash_rate * 10000000);
-  });
+// Calculate offline mining
+function calculateOfflineMining() {
+  const now = Date.now();
+  const diffSeconds = (now - lastTime) / 1000;
+
+  mined += diffSeconds * HASH_RATE;
+  lastTime = now;
+
+  localStorage.setItem("mined", mined);
+  localStorage.setItem("lastTime", lastTime);
 }
 
-// Initial load
-loadMining();
+// Update UI
+function updateUI() {
+  mineBalEl.innerText = mined.toFixed(7);
+  hashEl.innerText = Math.round(HASH_RATE * 100000000);
+}
 
-// UI refresh (visual only)
-setInterval(loadMining, 6000); // slow refresh
-    
+// Run once on load
+calculateOfflineMining();
+updateUI();
+
+// Visual live mining (while app open)
+setInterval(() => {
+  mined += HASH_RATE;
+  updateUI();
+  localStorage.setItem("mined", mined);
+}, 1000);
+
+// Save time on close
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("lastTime", Date.now());
+});
