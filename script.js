@@ -32,13 +32,13 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// Elements
 const mineBalEl = document.getElementById("mineBal");
-const hashEl = document.getElementById("hash");
 const balEl = document.getElementById("bal");
 const collectBtn = document.querySelector(".collect-btn");
 
 // Settings
-const HASH_RATE = 0.0000001; // slow mining per second
+const HASH_RATE = 0.0000001; // per second
 
 // Load saved data
 let mined = parseFloat(localStorage.getItem("mined")) || 0;
@@ -53,12 +53,12 @@ function calculateOfflineMining() {
   if (diffSeconds > 0) {
     mined += diffSeconds * HASH_RATE;
     lastTime = now;
-    localStorage.setItem("mined", mined);
-    localStorage.setItem("lastTime", lastTime);
   }
+
   saveData();
 }
 
+// Save
 function saveData() {
   localStorage.setItem("mined", mined);
   localStorage.setItem("balance", balance);
@@ -68,32 +68,31 @@ function saveData() {
 // Update UI
 function updateUI() {
   mineBalEl.innerText = mined.toFixed(7);
-  hashEl.innerText = Math.round(HASH_RATE * 100000000);
   balEl.innerText = balance.toFixed(7);
 }
 
-
-// Visual live setInterval(() => {
+// Live mining (while app open)
 setInterval(() => {
   mined += HASH_RATE;
+  lastTime = Date.now();   // 🔑 keep time synced
   updateUI();
   saveData();
-  localStorage.setItem("mined", mined);
 }, 1000);
 
-// Collect button logic
+// ✅ FIXED COLLECT BUTTON
 collectBtn.addEventListener("click", () => {
   if (mined <= 0) return;
 
-  balance += mined;   // move mined to balance
-  mined = 0;          // reset mined
-  lastTime = Date.now();
+  balance += mined;
+  mined = 0;
+
+  lastTime = Date.now();   // 🔥 CRITICAL FIX
 
   updateUI();
   saveData();
 });
 
-// Run once on load
+// Init
 calculateOfflineMining();
 updateUI();
 
@@ -101,3 +100,4 @@ updateUI();
 window.addEventListener("beforeunload", () => {
   localStorage.setItem("lastTime", Date.now());
 });
+  
