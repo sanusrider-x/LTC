@@ -87,6 +87,7 @@ collectBtn.addEventListener("click", () => {
 
   balance += mined;   // move mined to balance
   mined = 0;          // reset mined
+  lastTime = Date.now();
 
   updateUI();
   saveData();
