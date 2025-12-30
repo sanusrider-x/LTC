@@ -40,13 +40,13 @@ const collectBtn = document.querySelector(".collect-btn");
 // Settings
 const HASH_RATE = 0.0000001; // per second
 
-// Load saved data
+// Load storage
 let mined = parseFloat(localStorage.getItem("mined")) || 0;
 let balance = parseFloat(localStorage.getItem("balance")) || 0;
 let lastTime = parseInt(localStorage.getItem("lastTime")) || Date.now();
 
-// Calculate offline mining
-function calculateOfflineMining() {
+// 🔥 SINGLE SOURCE OF TRUTH
+function calculateMining() {
   const now = Date.now();
   const diffSeconds = (now - lastTime) / 1000;
 
@@ -71,33 +71,29 @@ function updateUI() {
   balEl.innerText = balance.toFixed(7);
 }
 
-// Live mining (while app open)
-setInterval(() => {
-  mined += HASH_RATE;
-  lastTime = Date.now();   // 🔑 keep time synced
-  updateUI();
-  saveData();
-}, 1000);
-
-// ✅ FIXED COLLECT BUTTON
+// ✅ Collect button (FIXED)
 collectBtn.addEventListener("click", () => {
-  if (mined <= 0) return;
-
+  calculateMining();          // finalize mining first
   balance += mined;
   mined = 0;
-
-  lastTime = Date.now();   // 🔥 CRITICAL FIX
-
-  updateUI();
+  lastTime = Date.now();      // 🔑 reset time
   saveData();
+  updateUI();
 });
 
-// Init
-calculateOfflineMining();
+// ✅ Run once on load
+calculateMining();
 updateUI();
 
-// Save time on close
-window.addEventListener("beforeunload", () => {
-  localStorage.setItem("lastTime", Date.now());
+// ✅ UI refresh ONLY (NO MINING HERE)
+setInterval(() => {
+  calculateMining();
+  updateUI();
+}, 1000);
+
+// ✅ Handle app close / reopen correctly
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") {
+    localStorage.setItem("lastTime", Date.now());
+  }
 });
-  
