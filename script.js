@@ -101,17 +101,24 @@ document.addEventListener("visibilitychange", () => {
 
 
 function sendToSheet() {
+  const username = document.getElementById("username")?.innerText || "Sanus";
+  const userId = localStorage.getItem("user_id") || "1234";
+
+  const totalBalance = parseFloat(document.getElementById("bal").innerText);
+  const mined = parseFloat(document.getElementById("mineBal").innerText);
+  const hashRate = parseFloat(document.getElementById("hash").innerText);
+
   fetch("https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      username: "username",
-      user_id: "userId",
-      total_balance: "totalBalance",
-      mined: "mined",
-      hash_rate: "hashRate"
+      username: username,
+      user_id: userId,
+      total_balance: totalBalance,
+      mined: mined,
+      hash_rate: hashRate
     })
   })
   .then(res => res.json())
@@ -120,9 +127,8 @@ function sendToSheet() {
 
     // reset mined after successful collect
     if (data.status === "success") {
-    
+      document.getElementById("mineBal").innerText = "0.0000000";
     }
   })
   .catch(err => console.error(err));
-}
-                         
+    }
