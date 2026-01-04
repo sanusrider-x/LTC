@@ -101,26 +101,11 @@ document.addEventListener("visibilitychange", () => {
 
 
 function send() {
-  fetch("https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      username: "Sanus",
-      user_id: "1234",
-      total_balance: 250,
-      mined: 250,
-      hash_rate: 10
-    })
+  fetch('https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec', {
+    method: 'post',
+    body: {
+    title: 'Title',
+    body: {body: "body", title: "title"}
+    }
   })
-  .then(res => res.text())   // IMPORTANT
-  .then(text => {
-    console.log(text);
-    alert(text);
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Fetch error");
-  });
 }
