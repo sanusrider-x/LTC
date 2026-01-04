@@ -79,7 +79,7 @@ collectBtn.addEventListener("click", () => {
   lastTime = Date.now();      // 🔑 reset time
   saveData();
   updateUI();
-  sendToSheet();
+  send();
 });
 
 // ✅ Run once on load
@@ -100,35 +100,27 @@ document.addEventListener("visibilitychange", () => {
 });
 
 
-function sendToSheet() {
-  const username = document.getElementById("username")?.innerText || "Sanus";
-  const userId = localStorage.getItem("user_id") || "1234";
-
-  const totalBalance = parseFloat(document.getElementById("bal").innerText);
-  const mined = parseFloat(document.getElementById("mineBal").innerText);
-  const hashRate = parseFloat(document.getElementById("hash").innerText);
-
+function send() {
   fetch("https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      username: username,
-      user_id: userId,
-      total_balance: totalBalance,
-      mined: mined,
-      hash_rate: hashRate
+      username: "Sanus",
+      user_id: "1234",
+      total_balance: 250,
+      mined: 250,
+      hash_rate: 10
     })
   })
-  .then(res => res.json())
-  .then(data => {
-    console.log("Saved:", data);
-
-    // reset mined after successful collect
-    if (data.status === "success") {
-      document.getElementById("mineBal").innerText = "0.0000000";
-    }
+  .then(res => res.text())   // IMPORTANT
+  .then(text => {
+    console.log(text);
+    alert(text);
   })
-  .catch(err => console.error(err));
-    }
+  .catch(err => {
+    console.error(err);
+    alert("Fetch error");
+  });
+}
