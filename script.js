@@ -79,6 +79,7 @@ collectBtn.addEventListener("click", () => {
   lastTime = Date.now();      // 🔑 reset time
   saveData();
   updateUI();
+  sendToSheet();
 });
 
 // ✅ Run once on load
@@ -98,21 +99,29 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-const API = "https://script.google.com/macros/s/AKfycbyf0An3AwzrSMM3MScP8pN1aR1j9QOXWhmXFdt0W0uGTTwuwsiJOlTCx3qs6lfGfyHuCg/exec";
 
-
-async function collect() {
-  const res = await fetch(API, {
+const API_URL = "https://script.google.com/macros/s/AKfycbyf0An3AwzrSMM3MScP8pN1aR1j9QOXWhmXFdt0W0uGTTwuwsiJOlTCx3qs6lfGfyHuCg/exec";
+function sendToSheet() {
+  fetch(API_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
-      user_id: user,
-      username: "WebUser",
+      username: "TestUser",
+      user_id: "123456",
+      total_balance: 0.005,
+      mined: 0.0002,
       hashrate: 10
     })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("Saved:", data);
+    alert("Data saved to sheet");
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error");
   });
-
-  const data = await res.json();
-  document.getElementById("mineBal").innerText =
-    data.balance.toFixed(7);
 }
