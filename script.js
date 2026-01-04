@@ -100,28 +100,29 @@ document.addEventListener("visibilitychange", () => {
 });
 
 
-const API_URL = "https://script.google.com/macros/s/AKfycbyf0An3AwzrSMM3MScP8pN1aR1j9QOXWhmXFdt0W0uGTTwuwsiJOlTCx3qs6lfGfyHuCg/exec";
 function sendToSheet() {
-  fetch(API_URL, {
+  fetch("https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      username: "TestUser",
-      user_id: "123456",
-      total_balance: 0.005,
-      mined: 0.0002,
-      hashrate: 10
+      username: "username",
+      user_id: "userId",
+      total_balance: "totalBalance",
+      mined: "mined",
+      hash_rate: "hashRate"
     })
   })
   .then(res => res.json())
   .then(data => {
     console.log("Saved:", data);
-    alert("Data saved to sheet");
+
+    // reset mined after successful collect
+    if (data.status === "success") {
+      document.getElementById("mineBal").innerText = "0.0000000";
+    }
   })
-  .catch(err => {
-    console.error(err);
-    alert("Error");
-  });
+  .catch(err => console.error(err));
 }
+                         
