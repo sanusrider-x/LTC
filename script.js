@@ -120,7 +120,7 @@ function sendToSheet() {
 
     // reset mined after successful collect
     if (data.status === "success") {
-      document.getElementById("mineBal").innerText = "0.0000000";
+    
     }
   })
   .catch(err => console.error(err));
