@@ -97,3 +97,23 @@ document.addEventListener("visibilitychange", () => {
     localStorage.setItem("lastTime", Date.now());
   }
 });
+
+const API = "https://script.google.com/macros/s/AKfycbyf0An3AwzrSMM3MScP8pN1aR1j9QOXWhmXFdt0W0uGTTwuwsiJOlTCx3qs6lfGfyHuCg/exec";
+const USER_ID = localStorage.getItem("uid") || Date.now();
+localStorage.setItem("uid", USER_ID);
+
+async function collect() {
+  const res = await fetch(API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      user_id: USER_ID,
+      username: "WebUser",
+      hashrate: 10
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("mineBal").innerText =
+    data.balance.toFixed(7);
+}
