@@ -81,7 +81,7 @@ collectBtn.addEventListener("click", () => {
   updateUI();
   send();
 });
-
+send();
 // ✅ Run once on load
 calculateMining();
 updateUI();
@@ -101,11 +101,27 @@ document.addEventListener("visibilitychange", () => {
 
 
 function send() {
-  fetch('https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec', {
-    method: 'post',
-    body: {
-    title: 'Title',
-    body: {body: "body", title: "title"}
-    }
+  fetch("https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      username: "Sanus",
+      user_id: "1234",
+      total_balance: 250,
+      mined: 250,
+      hash_rate: 10
+    })
   })
-}
+  .then(res => res.text())
+  .then(txt => {
+    console.log("SUCCESS:", txt);
+    alert("SUCCESS:\n" + txt);
+  })
+  .catch(err => {
+    console.error("FETCH ERROR:", err);
+    alert("FETCH ERROR – check console");
+  });
+  }
