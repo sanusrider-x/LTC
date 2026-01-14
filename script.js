@@ -98,30 +98,26 @@ document.addEventListener("visibilitychange", () => {
     localStorage.setItem("lastTime", Date.now());
   }
 });
-
+////////////
 
 function send() {
-  fetch("https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec", {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      username: "Sanus",
-      user_id: "1234",
-      total_balance: 250,
-      mined: 250,
-      hash_rate: 10
-    })
-  })
-  .then(res => res.text())
-  .then(txt => {
-    console.log("SUCCESS:", txt);
-    alert("SUCCESS:\n" + txt);
-  })
-  .catch(err => {
-    console.error("FETCH ERROR:", err);
-    alert("FETCH ERROR – check console");
+  const url = "https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec";
+
+  const params = new URLSearchParams({
+    username: "Sanus",
+    user_id: "1234",
+    total_balance: 250,
+    mined: 250,
+    hash_rate: 10
   });
-  }
+
+  fetch(url + "?" + params.toString())
+    .then(response => response.json())
+    .then(data => {
+      console.log("Success:", data);
+    })
+    .catch(error => {
+      console.error("Fetch Error:", error);
+    });
+                    }
+
