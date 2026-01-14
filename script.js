@@ -99,13 +99,12 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 ////////////
-
 function send() {
   const url = "https://script.google.com/macros/s/AKfycbw8pzOoR3sIE9oDZJ_9Iqy9E9Y2VTaQX3CFaQGdNl4ZgzYzm6Z_fBcQJvflJkzIUfMJqw/exec";
 
   const params = new URLSearchParams({
     username: "Sanus",
-    user_id: "1234",
+    user_id: "12ttt34",
     total_balance: 250,
     mined: 250,
     hash_rate: 10
@@ -119,5 +118,4 @@ function send() {
     .catch(error => {
       console.error("Fetch Error:", error);
     });
-                    }
-
+  }
