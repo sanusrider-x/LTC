@@ -81,7 +81,7 @@ collectBtn.addEventListener("click", () => {
   updateUI();
   send();
 });
-send();
+
 // ✅ Run once on load
 calculateMining();
 updateUI();
